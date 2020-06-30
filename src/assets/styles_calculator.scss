@@ -1,0 +1,194 @@
+$ruler: 17px;
+$color-red: #ae1100;
+$color-bg: #ebecf0;
+$color-shadow: #babecc;
+$color-white: #fff;
+$color-main-orange: #ff983c;
+$color-main-blue: #1ba0d9;
+
+#callback .center {
+    background-color: $color-bg;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    align-items: center;
+}
+#callback {
+    img {
+        width: 650px;
+        min-width: 300px;
+        border-radius: 10px 0 0 10px;
+        box-shadow: 20px 0px 13px -10px $color-shadow;
+    }
+}
+
+input,
+select,
+textarea,
+button,
+form a {
+    font-family: "Russia", sans-serif;
+    letter-spacing: -0.2px;
+    font-size: $ruler;
+}
+form {
+    padding: $ruler;
+    width: $ruler * 22;
+    margin: 0 auto;
+    color: $color-shadow;
+    text-shadow: 1px 1px 1px $color-white;
+    h4 {
+        display: block;
+        width: 100%;
+        text-align: center;
+        padding: 10px;
+    }
+    .error {
+        color: #fb5555;
+    }
+    .success {
+        color: green;
+    }
+}
+form button,
+input,
+form a {
+    border: 0;
+    outline: 0;
+    font-size: $ruler;
+    border-radius: $ruler * 20;
+    padding: $ruler;
+    background-color: $color-bg;
+    text-shadow: 1px 1px 0 $color-white;
+}
+label {
+    display: block;
+    margin-bottom: $ruler * 1.5;
+    width: 100%;
+    span {
+        padding: 10px;
+        color: red;
+        display: block;
+    }
+}
+input {
+    margin-right: $ruler/2;
+    box-shadow: inset 2px 2px 5px $color-shadow, inset -5px -5px 10px $color-white;
+    width: 100%;
+    box-sizing: border-box;
+    transition: all 0.2s ease-in-out;
+    appearance: none;
+    -webkit-appearance: none;
+
+    &:focus {
+        box-shadow: inset 1px 1px 2px $color-shadow, inset -1px -1px 2px $color-white;
+    }
+}
+
+form button,
+form a {
+    text-align: center;
+    color: #61677c;
+    font-weight: bold;
+    width: 100%;
+    box-shadow: -5px -5px 20px $color-white, 5px 5px 20px $color-shadow;
+    transition: all 0.2s ease-in-out;
+    cursor: pointer;
+    font-weight: 600;
+    margin-bottom: $ruler * 1.5;
+    &:hover {
+        box-shadow: -2px -2px 5px $color-white, 2px 2px 5px $color-shadow;
+    }
+
+    &:active {
+        box-shadow: inset 1px 1px 2px $color-shadow, inset -1px -1px 2px $color-white;
+    }
+
+    i {
+        margin-right: $ruler/2;
+    }
+    &.form_button {
+        display: block;
+        width: 100%;
+        &.orange {
+            color: $color-main-orange;
+        }
+        &.blue {
+            color: $color-main-blue;
+        }
+    }
+    &:last-child {
+        margin-bottom: 0;
+    }
+}
+form.full {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    flex-wrap: wrap;
+
+    .left {
+        width: 650px;
+    }
+    .right {
+        padding: $ruler;
+        width: $ruler * 22;
+        margin: 0 auto;
+    }
+    .top_option{
+        width: 100%;
+        display: flex;
+        justify-content: space-around;
+        flex-wrap: wrap;
+        .local{
+            margin-bottom: 20px;
+            width: 150px;
+            label{
+                color:black;
+                text-align: center;
+                margin-bottom: 5px;
+            }
+            select{
+                border-radius: 15px 15px 15px 15px;
+                width: 100%;
+                padding: 10px 10px;
+                font-size: .9rem;
+                transition: border-radius .3s ease;
+                &:focus{
+                    border-radius: 15px 15px 0 0;
+                }
+                
+            }
+            input{
+                margin: 0;
+                border-radius: 15px 15px 15px 15px;
+                padding: 10px 10px;
+                box-shadow: none;
+                background-color: white;
+                border: 1px solid rgb(169, 169, 169)
+            }
+        }
+    }
+    .services{
+        width: 100%;
+        color:black;
+        border-top: 1px solid rgb(169, 169, 169);
+        border-bottom: 1px solid rgb(169, 169, 169);
+        .name_block{
+            width: 100%;
+            text-align: center;
+            font-family: 'Roboto';
+            font-size:1.3rem;
+            
+        }
+    }
+}
+@media screen and (max-width: 1024px) {
+    #callback {
+        img {
+            width: 100%;
+            max-width: 500px;
+            border-radius: 10px 10px 0 0;
+        }
+    }
+}
