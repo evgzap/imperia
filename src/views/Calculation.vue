@@ -3,7 +3,7 @@
     <div class="wrapper">
       <div class="name_section">Расчитать стоимость</div>
       <div class="center">
-        <form method="POST" id="callback" class="form full" @submit.prevent="onSubmit">
+        <form method="POST" id="callback" class="form full" @submit.prevent="">
           <div class="left">
             <div class="top_option">
               <div class="local">
@@ -123,10 +123,10 @@ export default {
       { check: false, text: "Кухонный гарнитур", type: "set" }
     ],
     success_service: "",
+    total: "",
   }),
   methods: {
     onSubmit() {
-      console.log(this.success_service)
       if (this.name.length <= 2) {
         this.error_name = true;
         return false;
@@ -144,7 +144,10 @@ export default {
         telephone: this.telephone,
         from: "Калькулятор",
         text: "Оставили заявку через калькулятор",
-        serv: this.success_service
+        serv: this.success_service,
+        total: this.total,
+        typeC: this.typesC[this.selected_type_clean].type,
+        typeW: this.typesW[this.selected_type_window].type,
       };
       if(this.area <= 10){
         this.response = "<span class='error'>Упс, Меньше 10 м<sup>2</sup></span>"
@@ -161,6 +164,7 @@ export default {
         })
         .catch(error => {
           this.response = "<span class='error'>Упс, попробуйте позже ♥</span>";
+          console.log(param)
           this.name = "";
           this.telephone = "";
           return false;
@@ -248,10 +252,11 @@ export default {
           }
         }
       }
-      serv+= "\n на сумму " + t + "р."
+      serv+= "\n доп услуги на " + t + "р."
       this.success_service = serv
       price_c *= this.area;
       total = price_c + price_w + t;
+      this.total = "На сумму "+total + " Рублей"
       return total;
     }
   }
