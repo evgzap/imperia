@@ -9,7 +9,7 @@
           </h4>
           <label>
             <input type="text" name="name" placeholder="Ваше имя" id="name" v-model="name" required />
-            <span v-if="error_name">
+            <span v-if="error_name" class="error">
               Вы пропустили поле
             </span>
           </label>
@@ -23,7 +23,7 @@
               @focus="telephone = '+7'"
               required
             />
-            <span v-if="error_tel">
+            <span v-if="error_tel" class="error">
               Проверте указанные данные 
             </span>
           </label>
@@ -66,7 +66,8 @@ export default {
         name: this.name, 
         telephone: this.telephone,
         from: "Заявка",
-        text: "Оставили заявку на звонок"
+        text: "Оставили заявку на звонок",
+        area: this.area
       }
       const str = JSON.stringify(param)
       Vue.axios.post('/method/send.php', str).then((response) =>{

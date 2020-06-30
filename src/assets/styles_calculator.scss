@@ -64,11 +64,6 @@ label {
     display: block;
     margin-bottom: $ruler * 1.5;
     width: 100%;
-    span {
-        padding: 10px;
-        color: red;
-        display: block;
-    }
 }
 input {
     margin-right: $ruler/2;
@@ -83,7 +78,6 @@ input {
         box-shadow: inset 1px 1px 2px $color-shadow, inset -1px -1px 2px $color-white;
     }
 }
-
 form button,
 form a {
     text-align: center;
@@ -132,56 +126,91 @@ form.full {
     }
     .right {
         padding: $ruler;
-        width: $ruler * 22;
+        width: $ruler * 20;
         margin: 0 auto;
     }
-    .top_option{
+    .top_option {
         width: 100%;
         display: flex;
         justify-content: space-around;
         flex-wrap: wrap;
-        .local{
+        .local {
             margin-bottom: 20px;
             width: 150px;
-            label{
-                color:black;
+            label {
+                color: black;
                 text-align: center;
                 margin-bottom: 5px;
             }
-            select{
+            select {
                 border-radius: 15px 15px 15px 15px;
                 width: 100%;
                 padding: 10px 10px;
-                font-size: .9rem;
-                transition: border-radius .3s ease;
-                &:focus{
+                font-size: 0.9rem;
+                transition: border-radius 0.3s ease;
+                &:focus {
                     border-radius: 15px 15px 0 0;
                 }
-                
             }
-            input{
+            input {
                 margin: 0;
                 border-radius: 15px 15px 15px 15px;
                 padding: 10px 10px;
                 box-shadow: none;
                 background-color: white;
-                border: 1px solid rgb(169, 169, 169)
+                border: 1px solid rgb(169, 169, 169);
             }
         }
     }
-    .services{
+    .services {
         width: 100%;
-        color:black;
+        color: black;
         border-top: 1px solid rgb(169, 169, 169);
         border-bottom: 1px solid rgb(169, 169, 169);
-        .name_block{
+        .name_block {
             width: 100%;
             text-align: center;
-            font-family: 'Roboto';
-            font-size:1.3rem;
-            
+            font-family: "Roboto";
+            font-size: 1.3rem;
+        }
+        input[type="checkbox"] {
+            -webkit-appearance: checkbox;
+            margin: 0;
+            box-shadow: none;
+            width: auto;
+        }
+        label {
+            padding: 5px 10px;
+            margin-bottom: 10px;
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+            cursor: pointer;
+            border-radius: 10px;
+            span {
+                width: 50%;
+                text-shadow: none;
+            }
+            &:nth-child(even) {
+                background: $color-main-blue;
+                color: white;
+            }
+            &:nth-child(odd) {
+                background: $color-main-orange;
+                color: white;
+            }
         }
     }
+}
+.price {
+    color: black;
+}
+span.error {
+    text-align: center;
+    width: 100%;
+    padding: 10px;
+    display: block;
+    font-weight: bold;
 }
 @media screen and (max-width: 1024px) {
     #callback {
@@ -189,6 +218,26 @@ form.full {
             width: 100%;
             max-width: 500px;
             border-radius: 10px 10px 0 0;
+        }
+    }
+    form.full {
+        .left {
+            width: 100%;
+            max-width: 500px;
+        }
+    }
+}
+@media screen and (max-width: 874px) {
+    form.full {
+        .left {
+            .services {
+                label {
+                    padding: 10px;
+                    span {
+                        width: 100%;
+                    }
+                }
+            }
         }
     }
 }
