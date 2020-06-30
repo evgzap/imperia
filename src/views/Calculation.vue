@@ -145,9 +145,10 @@ export default {
         from: "Калькулятор",
         text: "Оставили заявку через калькулятор",
         serv: this.success_service,
-        total: this.total,
+        area: this.area,
         typeC: this.typesC[this.selected_type_clean].type,
         typeW: this.typesW[this.selected_type_window].type,
+        total: this.total,
       };
       if(this.area <= 10){
         this.response = "<span class='error'>Упс, Меньше 10 м<sup>2</sup></span>"
@@ -164,7 +165,6 @@ export default {
         })
         .catch(error => {
           this.response = "<span class='error'>Упс, попробуйте позже ♥</span>";
-          console.log(param)
           this.name = "";
           this.telephone = "";
           return false;
@@ -176,13 +176,6 @@ export default {
       }
       if (this.telephone.length == 0) {
         this.telephone = "";
-      }
-    },
-    test(e) {
-      if (e) {
-        return "да";
-      } else {
-        return "нет";
       }
     },
     price() {
