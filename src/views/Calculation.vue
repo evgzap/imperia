@@ -3,7 +3,7 @@
     <div class="wrapper">
       <div class="name_section">Расчитать стоимость</div>
       <div class="center">
-        <form method="POST" id="callback" class="form full" @submit.prevent="">
+        <form method="POST" id="callback" class="form full" @submit.prevent>
           <div class="left">
             <div class="top_option">
               <div class="local">
@@ -26,6 +26,21 @@
                   >{{typeW.type}}</option>
                 </select>
               </div>
+              <div class="local" v-if="selected_type_window == 0 || selected_type_window == 1">
+                <label>Кол-во стоворок</label>
+                <input type="number" name="areaW" placeholder="Кол-во" v-model="areaW" />
+              </div>
+              
+              <div class="local" v-if="selected_type_window == 3 || selected_type_window == 4">
+                <label>Площадь витража</label>
+                <input
+                  type="number"
+                  name="areaW"
+                  placeholder="Кол-во"
+                  v-model="areaW"
+                  autocomplete="off"
+                />
+              </div>
               <div class="local">
                 <label>Площадь М</label>
                 <input
@@ -44,9 +59,7 @@
                 v-bind:key="service.type"
                 v-bind:id="service.type"
               >
-                <span>
-                  {{service.text}}
-                </span>
+                <span v-html="service.text"></span>
                 <input type="checkbox" v-model="service.check" />
               </label>
             </div>
@@ -59,25 +72,28 @@
             </div>
             <h4 v-html="response" />
             <label>
-            <input type="text" name="name" placeholder="Ваше имя" id="name" v-model="name" required />
-            <span v-if="error_name" class="error">
-              Вы пропустили поле
-            </span>
-          </label>
-          <label>
-            <input
-              type="tel"
-              name="telephone"
-              placeholder="Ваш телефон"
-              @keyup="tel"
-              v-model="telephone"
-              @focus="telephone = '+7'"
-              required
-            />
-            <span v-if="error_tel" class="error">
-              Проверте указанные данные 
-            </span>
-          </label>
+              <input
+                type="text"
+                name="name"
+                placeholder="Ваше имя"
+                id="name"
+                v-model="name"
+                required
+              />
+              <span v-if="error_name" class="error">Вы пропустили поле</span>
+            </label>
+            <label>
+              <input
+                type="tel"
+                name="telephone"
+                placeholder="Ваш телефон"
+                @keyup="tel"
+                v-model="telephone"
+                @focus="telephone = '+7'"
+                required
+              />
+              <span v-if="error_tel" class="error">Проверте указанные данные</span>
+            </label>
             <button type="submit" class="form_button orange" @click="onSubmit">
               <i class="fa fa-paper-plane" aria-hidden="true"></i>Оставить заявку
             </button>
@@ -109,12 +125,15 @@ export default {
     typesW: [
       { type: "Простая мойка", mask: 0 },
       { type: "После ремонта", mask: 1 },
+      { type: "Витражи простая", mask: 3 },
+      { type: "Витражи ремонт", mask: 4 },
       { type: "Не требуется", mask: 2 }
     ],
     selected_type_window: 2,
     area: "",
+    areaW: "",
     services: [
-      { check: false, text: "Вынос мусора", type: "trash" },
+      { check: false, text: "Вынос мусора <sup>до 5 кг бесплатно</sup>", type: "trash" },
       { check: false, text: "Химчистка мягкой мебели", type: "soft" },
       { check: false, text: "Химчистка напольных покрытий", type: "floor" },
       { check: false, text: "Мытье холодильника", type: "ref" },
@@ -123,7 +142,7 @@ export default {
       { check: false, text: "Кухонный гарнитур", type: "set" }
     ],
     success_service: "",
-    total: "",
+    total: ""
   }),
   methods: {
     onSubmit() {
@@ -145,14 +164,16 @@ export default {
         from: "Калькулятор",
         text: "Оставили заявку через калькулятор",
         serv: this.success_service,
-        area: this.area,
         typeC: this.typesC[this.selected_type_clean].type,
+        area: this.area,
         typeW: this.typesW[this.selected_type_window].type,
-        total: this.total,
+        areaW: this.areaW,
+        total: this.total
       };
-      if(this.area <= 10){
-        this.response = "<span class='error'>Упс, Меньше 10 м<sup>2</sup></span>"
-        return false
+      if (this.area <= 10) {
+        this.response =
+          "<span class='error'>Упс, Меньше 10 м<sup>2</sup></span>";
+        return false;
       }
       const str = JSON.stringify(param);
       Vue.axios
@@ -183,7 +204,8 @@ export default {
       var price_w = 0;
       var total;
       var t = 0;
-      var serv = '';
+      var tW = 0;
+      var serv = "";
       switch (this.selected_type_clean) {
         case 0:
           price_c = 70;
@@ -207,6 +229,12 @@ export default {
         case 2:
           price_w = 0;
           break;
+        case 3:
+          price_w = 250;
+          break;
+        case 4:
+          price_w = 300;
+          break;
         default:
           break;
       }
@@ -214,42 +242,44 @@ export default {
         if (this.services[i].check != 0) {
           switch (this.services[i].type) {
             case "trash":
-              serv+=this.services[i].text 
-              t += 1;
+              serv += this.services[i].text;
+              t += 0;
               break;
             case "soft":
-              serv+="\n"+this.services[i].text
-              t += 2;
+              serv += "\n" + this.services[i].text;
+              t += 500;
               break;
             case "floor":
-              serv+="\n"+this.services[i].text
-              t += 3;
+              serv += "\n" + this.services[i].text;
+              t += 150;
               break;
             case "ref":
-              serv+="\n"+this.services[i].text
+              serv += "\n" + this.services[i].text;
               t += 500;
-              break;    
+              break;
             case "microwave":
-              serv+="\n"+this.services[i].text 
+              serv += "\n" + this.services[i].text;
               t += 300;
-              break;  
+              break;
             case "oven":
-              serv+="\n"+this.services[i].text
+              serv += "\n" + this.services[i].text;
               t += 500;
-              break;  
+              break;
             case "set":
-              serv+="\n"+this.services[i].text 
+              serv += "\n" + this.services[i].text;
               t += 1000;
-              break;  
-            default: break;
+              break;
+            default:
+              break;
           }
         }
       }
-      serv+= "\n доп услуги на " + t + "р."
-      this.success_service = serv
+      serv += "\n доп услуги на " + t + "р.";
+      this.success_service = serv;
       price_c *= this.area;
+      price_w *= this.areaW;
       total = price_c + price_w + t;
-      this.total = "На сумму "+total + " Рублей"
+      this.total = "На сумму " + total + " Рублей";
       return total;
     }
   }
