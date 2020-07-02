@@ -204,7 +204,6 @@ export default {
       var price_w = 0;
       var total;
       var t = 0;
-      var tW = 0;
       var serv = "";
       switch (this.selected_type_clean) {
         case 0:
