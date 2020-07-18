@@ -39,7 +39,7 @@
         <div class="center">
           <ul>
             <li id="logo">
-              <img src="@/assets/images/logo.png" alt="1" />
+              <img src="/img/logo.png" alt="Империя чистоты" />
               <div id="name_company">
                 <router-link to="/">Империя Чистоты</router-link>
               </div>
@@ -65,7 +65,7 @@
       <div class="wrapper">
         <ul>
           <li id="logo">
-            <img src="@/assets/images/logo.png" alt="1" />
+            <img src="/img/logo.png" alt="Империя чистоты" />
             <div id="name_company" @click="trigger_menu=false">
               <router-link to="/">Империя Чистоты</router-link>
             </div>
@@ -75,7 +75,7 @@
           <li>Отзывы</li>
           <li>Контакты</li>
           <li class="btn" @click="trigger_menu=false">
-            <router-link  :to="'/callBack/'+citi()" >Заказать звонок</router-link>
+            <router-link :to="'/callBack/'+citi()">Заказать звонок</router-link>
           </li>
         </ul>
         <div id="contact_us">
@@ -92,8 +92,7 @@
       <button @click.prevent="trigger_menu = !trigger_menu" :class="{active:trigger_menu}">+</button>
     </div>
     <main>
-      <!-- <router-link :to="'/calculation/'+citi()" >Калькулятор</router-link>  -->
-      <router-view />
+      <router-view v-bind:ct="citi()"/>
     </main>
     <footer>
       <div class="wrapper">
