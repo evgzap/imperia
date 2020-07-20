@@ -92,14 +92,77 @@
               <div class="text_info mini">Подарочный сертификат на уборку</div>
             </div>
           </div>
-          
         </div>
+      </div>
+    </section>
+    <section class="main_section" id="sale">
+      <div class="wrapper">
+        <div class="left">
+          <div class="name_section">
+            <span>
+              Акция
+              <hr />
+            </span> снижение цены
+          </div>
+          <div class="main_left_text">
+            <div class="sale_text">
+              Мойка окон от 200руб/м
+              <sup>2</sup>
+            </div>
+            <div class="sale_text">
+              Генеральная уборка от 40руб/м
+              <sup>2</sup>
+            </div>
+            <div
+              class="sale_text info"
+            >В Генеральную уборку от 40р/м2 входит мытье полов, обеспыливание всех наружних поверхностей, мытье санузлов и сантехники</div>
+            <div class="btn">
+              <router-link :to="'/calculation/'+ct">Расчитать стоимость</router-link>
+            </div>
+            <div class="sale_text ps">
+              В генеральную уборку от 70р/м2 входит мытье и обеспыливание всех наружних поверхностей,включая стены в комнатах, санузлах, сантехника, двери, выключатели,зеркала,потолок.
+            </div>
+          </div>
+        </div>
+        <div class="right">
+          <div class="main_right_image">
+            <img src="/img/woman1.png" alt />
+          </div>
+        </div>
+      </div>
+    </section>
+    <section id="photo" class="main_section">
+      <div class="wrapper">
+        <div class="left">
+          <div class="name_section">
+            Наши <span>работы</span>
+          </div>
+          <div class="btn" style="width:100%">
+            <a @click.prevent="get_photos()">показать</a>
+          </div>
+        </div>
+        <div class="right"></div>
       </div>
     </section>
   </div>
 </template>
 <script>
+import Vue from "vue";
 export default {
-  props: ["ct"]
+  props: ["ct"],
+  data: ()=>({
+    quantity: 0,
+    sort: "up",
+  }),
+  methods:{
+    get_photos(){
+      var param={
+        quantity: this.quantity,
+        sort: this.sort,
+      };
+      const str = JSON.stringify(param);
+      console.log(str)
+    }
+  }
 };
 </script>

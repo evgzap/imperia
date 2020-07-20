@@ -241,3 +241,12 @@ span.error {
         }
     }
 }
+@media screen and (max-width: 660px){
+    form.full{
+        .top_option{
+            .local{
+                width: 100%;
+            }
+        }
+    }
+}
