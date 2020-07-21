@@ -119,9 +119,9 @@
             <div class="btn">
               <router-link :to="'/calculation/'+ct">Расчитать стоимость</router-link>
             </div>
-            <div class="sale_text ps">
-              В генеральную уборку от 70р/м2 входит мытье и обеспыливание всех наружних поверхностей,включая стены в комнатах, санузлах, сантехника, двери, выключатели,зеркала,потолок.
-            </div>
+            <div
+              class="sale_text ps"
+            >В генеральную уборку от 70р/м2 входит мытье и обеспыливание всех наружних поверхностей,включая стены в комнатах, санузлах, сантехника, двери, выключатели,зеркала,потолок.</div>
           </div>
         </div>
         <div class="right">
@@ -135,13 +135,53 @@
       <div class="wrapper">
         <div class="left">
           <div class="name_section">
-            Наши <span>работы</span>
+            Наши
+            <span>работы</span>
           </div>
-          <div class="btn" style="width:100%">
-            <a @click.prevent="get_photos()">показать</a>
+         
+          
+        </div>
+        <div class="right">
+          
+        </div>
+        <div class="center">
+           <div class="sort">
+            <div id="qua" class="sort_input">
+              <label>Кол-во фото</label>
+              <input type="number" name="qua" v-model="quantity" />
+            </div>
+            <div id="sorted" class="sort_input">
+              <label>Сортировка</label>
+              <select v-model="sort">
+                <option
+                  v-for="type in sort_type"
+                  v-bind:value="type.mask"
+                  v-bind:key="type.mask"
+                >{{type.type}}</option>
+              </select>
+            </div>
+            <div class="btn">
+            <a @click.prevent="get_photos()">применить</a>
+          </div>
+          </div>
+          <div class="our_service">
+            <div class="response_message" v-if="bool_image">
+              <div class="text_response">
+                {{text_image_response}}
+                <span v-if="!error_load">
+                  <i class="fa fa-spinner" aria-hidden="true"></i>
+                </span>
+              </div>
+            </div>
+            <div class="block_image" v-if="!bool_image">
+              <img
+                v-for="image in images"
+                v-bind:src="'https://imperiaclean.ru/images/upload/'+image"
+                v-bind:key="image"
+              />
+            </div>
           </div>
         </div>
-        <div class="right"></div>
       </div>
     </section>
   </div>
@@ -150,19 +190,47 @@
 import Vue from "vue";
 export default {
   props: ["ct"],
-  data: ()=>({
-    quantity: 0,
-    sort: "up",
+  data: () => ({
+    quantity: 10,
+    sort: "ASC",
+    sort_type: [
+      { type: "Новее", mask: "DESC" },
+      { type: "Страше", mask: "ASC" }
+    ],
+    images: null,
+    bool_image: false,
+    text_image_response: "",
+    error_load: false
   }),
-  methods:{
-    get_photos(){
-      var param={
+  methods: {
+    get_photos() {
+      var param = {
         quantity: this.quantity,
-        sort: this.sort,
+        sort: this.sort
       };
+
       const str = JSON.stringify(param);
-      console.log(str)
+      this.text_image_response = "Загрузка изображений";
+      this.bool_image = true;
+
+      Vue.axios
+        .post("https://imperiaclean.ru/method/get_photos.php", str)
+        .then(response => {
+          var answer = response.data;
+          this.images = answer;
+          this.bool_image = false;
+        })
+        .catch(error => {
+          var answer = error;
+          this.text_image_response = "Ошибка загрузки";
+          this.bool_image = true;
+          this.error_load = true;
+          this.images = answer;
+        });
     }
+  },
+  mounted() {
+    this.get_photos();
   }
 };
 </script>
