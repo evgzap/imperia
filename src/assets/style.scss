@@ -416,6 +416,9 @@ main {
         padding-bottom: 70px;
     }
     #photo {
+        .wrapper{
+            background-color: rgba(255,255,255,0.9  );
+        }
         .sort {
             display: flex;
             justify-content: center;
@@ -428,17 +431,34 @@ main {
                 width: unset !important;
                 a {
                     font-weight: normal;
-                    padding: 5px 10px;
-                    background: linear-gradient(270deg, #ffffff, $blue);
+                    padding: 10px 10px;
+                    background: linear-gradient(270deg, $blue, rgb(132, 26, 219));
                     background-size: 600% 200%;
                     background-repeat: no-repeat;
-                    background-position: -610px 0;
+                    background-position: -550px 0;
                     transition: all .4s ease;
-
-                    color: $blue;
+                    color: transparent;
+                    -webkit-background-clip: text;
+                    border-bottom: 1px solid transparent;
+                    border-top: 1px solid transparent;
+                    border-left: 1px solid transparent;
+                    border-right: 1px solid transparent;
+                    box-shadow: 0 0 0 transparent;
+                    // color: $blue;
                     &:hover{
                         background-position:  0 ;
-                        color: white;
+                        padding: 2px 10px;
+                        border-radius: 0;
+                        border-bottom: 1px solid $blue;
+                        border-top: 1px solid $blue;
+                    }
+                    &:active{
+                        color:darken($color: $blue, $amount: 10);
+                        border-radius: 10px;
+                        border-left: 1px solid $blue;
+                        border-right: 1px solid $blue;
+                        padding: 5px 10px;
+                        box-shadow: 5px 5px 5px silver;
                     }
                 }
             }
@@ -476,6 +496,7 @@ main {
             }
         }
         .center {
+            margin-bottom: 50px;
             .our_service {
                 width: 100%;
                 .response_message {
@@ -498,6 +519,12 @@ main {
                 }
                 img {
                     height: 300px;
+                    box-shadow: 5px 5px 10px silver;
+                    transition: all .3s ease;
+                    cursor: pointer;
+                    &:active{
+
+                    }
                 }
             }
         }

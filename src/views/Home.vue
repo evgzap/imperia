@@ -178,9 +178,22 @@
                 v-for="image in images"
                 v-bind:src="'https://imperiaclean.ru/images/upload/'+image"
                 v-bind:key="image"
+                @click="full_frame_image"
               />
             </div>
           </div>
+        </div>
+      </div>
+    </section>
+    <section class="main_section" id="services">
+      <div class="wrapper">
+        <div class="left">
+          <div class="name_section">
+            Наши <span>услуги</span>
+          </div>
+        </div>
+        <div class="right">
+
         </div>
       </div>
     </section>
@@ -203,6 +216,9 @@ export default {
     error_load: false
   }),
   methods: {
+    full_frame_image(event){
+      console.log(event.path[0].src);
+    },
     get_photos() {
       var param = {
         quantity: this.quantity,

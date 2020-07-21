@@ -134,7 +134,8 @@ export default {
       "Ростов-на-Дону",
       "Москва",
       "TEST",
-      "Москва"
+      "Москва",
+      "Мытищи"
     ],
     dom: [
       "tula",
@@ -147,7 +148,8 @@ export default {
       "rstvnd",
       "msc",
       "localhost",
-      "imperiacean"
+      "imperiacean",
+      "mtszh"
     ],
     pref: window.location.hostname.split(".")[0]
   }),

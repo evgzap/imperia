@@ -19,6 +19,7 @@ export default {
       "Энгельс",
       "Ростов-на-Дону",
       "Москва",
+      "Мытищи"
     //   "TEST",
     ],
     dom: [
@@ -31,6 +32,7 @@ export default {
       "engls",
       "rstvnd",
       "msc",
+      "mtszh",
     //   "localhost",
     ],
   }),
