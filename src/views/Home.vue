@@ -242,6 +242,7 @@ export default {
           this.bool_image = true;
           this.error_load = true;
           this.images = answer;
+          console.log(error.data)
         });
     }
   },

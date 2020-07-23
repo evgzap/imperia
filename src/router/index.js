@@ -19,6 +19,21 @@ Vue.use(VueRouter)
     path: '/calculation/:id',
     name: 'Calculation',
     component: () => import('@/views/Calculation.vue')
+  },
+  {
+    path: '/js/:id',
+    name: 'JsId',
+    component: () => import('@/views/js.vue')
+  },
+  {
+    path: '/js/',
+    name: 'Js',
+    component: () => import('@/views/js.vue')
+  },
+  {
+    path: '*',
+    name: 'error',
+    component: () => import('@/views/error.vue')
   }
 ]
 

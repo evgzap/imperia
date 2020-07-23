@@ -25,6 +25,15 @@ $mini_section_w_d: 50;
         justify-content: space-between;
         width: 100%;
     }
+    .name_section{
+        span{
+            color:$blue;
+            &.error{
+                color:red
+            }
+        }
+    }
+    
 }
 .fa {
     width: 25px;
@@ -332,9 +341,6 @@ main {
                 padding: 0;
 
                 padding: 20px 0;
-                span {
-                    color: $blue;
-                }
             }
         }
         .name_section {
@@ -439,6 +445,7 @@ main {
                     transition: all .4s ease;
                     color: transparent;
                     -webkit-background-clip: text;
+                    background-clip: text;  
                     border-bottom: 1px solid transparent;
                     border-top: 1px solid transparent;
                     border-left: 1px solid transparent;
@@ -522,9 +529,6 @@ main {
                     box-shadow: 5px 5px 10px silver;
                     transition: all .3s ease;
                     cursor: pointer;
-                    &:active{
-
-                    }
                 }
             }
         }

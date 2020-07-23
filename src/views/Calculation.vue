@@ -280,7 +280,19 @@ export default {
       total = price_c + price_w + t;
       this.total = "На сумму " + total + " Рублей";
       return total;
-    }
+    },
+    full_screen(){
+            var nav = document.querySelector('nav').clientHeight
+            var header = document.querySelector('header').clientHeight
+            var footer = document.querySelector('footer').clientHeight
+
+            var full = window.innerHeight-nav-header-footer
+
+            document.querySelector("section").style.height = full +"px"
+        }
+  },
+  mounted(){
+    this.full_screen()
   }
 };
 </script>

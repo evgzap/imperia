@@ -92,7 +92,19 @@ export default {
       if (this.telephone.length == 0) {
         this.telephone = "";
       }
+    },
+    full_screen() {
+      var nav = document.querySelector("nav").clientHeight;
+      var header = document.querySelector("header").clientHeight;
+      var footer = document.querySelector("footer").clientHeight;
+
+      var full = window.innerHeight - nav - header - footer;
+
+      document.querySelector("section").style.height = full + "px";
     }
+  },
+  mounted(){
+    this.full_screen()
   }
 };
 </script>
