@@ -12,4 +12,4 @@ ABOUT THIS SITE
 
 [![image_site](https://imperiaclean.ru/img/bg.png)](https://imperiaclean.ru/)
 
-this site serves as the business card of the company Empire of cleanliness, through which you can order cleaning, calculate the cost of cleaning. The site itself runs on vue, but its server side is written in php, so the site has a high page loading speed, reactive operation, and thanks to axios makes http requests to the mysql server and receives images
+This site serves as the business card of the company Empire of cleanliness, through which you can order cleaning, calculate the cost of cleaning. The site itself runs on vue, but its server side is written in php, so the site has a high page loading speed, reactive operation, and thanks to axios makes http requests to the mysql server and receives images
