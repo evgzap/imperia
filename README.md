@@ -1,4 +1,4 @@
-Empire of purity
+Empire of cleanliness
 =============================
 
 This site is a service for cleaning your home or office
