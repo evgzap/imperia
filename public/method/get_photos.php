@@ -28,7 +28,7 @@ $host = "localhost";
 $db = "imperia-clean07";
 $user = "imperia-clean07";
 $password = "1zap9unn9yy8";
-$link = mysqli_connect($host, $user, $password, $db) or die("РћС€РёР±РєР° " . mysqli_error($link));
+$link = mysqli_connect($host, $user, $password, $db) or die("Ошибка " . mysqli_error($link));
 
 $sql = mysqli_query($link, 'SELECT * FROM `photos` ORDER by other '.$sort.' LIMIT 0, '.$quantity);
 $answer  = array();
