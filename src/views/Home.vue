@@ -4,7 +4,7 @@
       <div class="wrapper">
         <div class="left">
           <div class="name_section">
-            <span>порфесиональная</span> уборка
+            <span>профессиональная</span> уборка
           </div>
           <h1
             class="h_text"
@@ -105,6 +105,18 @@
             </span> снижение цены
           </div>
           <div class="main_left_text">
+            <div id="timer">
+              <div class="name_timer">До конца акции:</div>
+              <div class="time">
+                <div id="d">
+                  {{convert()[0]}}
+                  <span>дней</span>
+                </div>
+                <div id="h">{{convert()[1]}}:</div>
+                <div id="m">{{convert()[2]}}:</div>
+                <div id="s">{{convert()[3]}}</div>
+              </div>
+            </div>
             <div class="sale_text">
               Мойка окон от 200руб/м
               <sup>2</sup>
@@ -138,14 +150,10 @@
             Наши
             <span>работы</span>
           </div>
-         
-          
         </div>
-        <div class="right">
-          
-        </div>
+        <div class="right"></div>
         <div class="center">
-           <div class="sort">
+          <div class="sort">
             <div id="qua" class="sort_input">
               <label>Кол-во фото</label>
               <input type="number" name="qua" v-model="quantity" />
@@ -161,8 +169,8 @@
               </select>
             </div>
             <div class="btn">
-            <a @click.prevent="get_photos()">применить</a>
-          </div>
+              <a @click.prevent="get_photos()">применить</a>
+            </div>
           </div>
           <div class="our_service">
             <div class="response_message" v-if="bool_image">
@@ -189,11 +197,144 @@
       <div class="wrapper">
         <div class="left">
           <div class="name_section">
-            Наши <span>услуги</span>
+            Наши
+            <span>услуги</span>
           </div>
         </div>
-        <div class="right">
-
+        <div class="right"></div>
+        <div class="center">
+          <div class="grid">
+            <div class="stack first">
+              <div class="service_block">
+                <div class="card">
+                  <div class="name_service">Генеральная уборка</div>
+                  <div class="service_image">
+                    <img src="/img/2.jpg" alt />
+                  </div>
+                  <div class="btn">
+                    <a href>Подробнее</a>
+                  </div>
+                </div>
+              </div>
+              <div class="service_block">
+                <div class="card">
+                  <div class="name_service">Химчистка мягкой мебели</div>
+                  <div class="service_image">
+                    <img src="/img/4.jpg" alt />
+                  </div>
+                  <div class="btn">
+                    <a href>Подробнее</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="stack second">
+              <div class="service_block">
+                <div class="card">
+                  <div class="name_service">Уборка после ремонта</div>
+                  <div class="service_image">
+                    <img src="/img/5.jpg" alt />
+                  </div>
+                  <div class="btn">
+                    <a href>Подробнее</a>
+                  </div>
+                </div>
+              </div>
+              <div class="service_block">
+                <div class="card">
+                  <div class="name_service">Поддерживающая уборка</div>
+                  <div class="service_image">
+                    <img src="/img/1.jpg" alt />
+                  </div>
+                  <div class="btn">
+                    <a href>Подробнее</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="stack three">
+              <div class="service_block">
+                <div class="card">
+                  <div class="name_service margin_transition">Мойка окон</div>
+                  <div class="service_image">
+                    <img src="/img/3.jpg" alt />
+                  </div>
+                  <div class="btn">
+                    <a href>Подробнее</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="service_price">
+          <div class="center">
+            <div class="name_section">
+              <span>цены</span> на услуги
+            </div>
+          </div>
+          <div class="left">
+            <div class="small_service_name">Основные услуги</div>
+            <div class="price_block">
+              <div class="name_service">Генеральная уборка</div>
+              <div class="price_service">от 70 руб.</div>
+            </div>
+            <div class="price_block">
+              <div class="name_service">Уборка после ремонта</div>
+              <div class="price_service">от 90 руб.</div>
+            </div>
+            <div class="price_block">
+              <div class="name_service">Мойка окон</div>
+              <div class="price_service">от 200 руб.</div>
+            </div>
+            <div class="price_block">
+              <div class="name_service">Мойка окон после ремонта</div>
+              <div class="price_service">от 250 руб.</div>
+            </div>
+            <div class="price_block">
+              <div class="name_service">Витражи</div>
+              <div class="price_service">от 150 руб.</div>
+            </div>
+            <div class="price_block">
+              <div class="name_service">Выннос мусора (до 5кг - бесплатно)</div>
+              <div class="price_service">от 500 руб.</div>
+            </div>
+            <div class="price_block">
+              <div class="name_service">Химчистка мягкой мебели</div>
+              <div class="price_service">от 500 руб.</div>
+            </div>
+            <div class="price_block">
+              <div class="name_service">Химчистка напольных покрытий</div>
+              <div class="price_service">от 150 руб.</div>
+            </div>
+          </div>
+          <div class="right">
+            <div class="small_service_name">Дополнительные услуги</div>
+            <div class="price_block">
+              <div class="name_service">Мытье холодильнка</div>
+              <div class="price_service">от 500р руб.</div>
+            </div>
+            <div class="price_block">
+              <div class="name_service">Микроволновая печь</div>
+              <div class="price_service">от 300 руб.</div>
+            </div>
+            <div class="price_block">
+              <div class="name_service">Духовой шкаф</div>
+              <div class="price_service">от 500 руб.</div>
+            </div>
+            <div class="price_block">
+              <div class="name_service">Кухонный гарнитур</div>
+              <div class="price_service">от 1000 руб.</div>
+            </div>
+          </div>
+        </div>
+        <div class="block_for_button">
+          <div class="btn">
+            <router-link :to="'/calculation/'+ct">Расчитать стоимость</router-link>
+          </div>
+          <div class="btn">
+            <router-link :to="'/callBack/'+ct">Заказать звонок</router-link>
+          </div>
         </div>
       </div>
     </section>
@@ -208,21 +349,34 @@ export default {
     sort: "ASC",
     sort_type: [
       { type: "Новее", mask: "DESC" },
-      { type: "Страше", mask: "ASC" }
+      { type: "Страше", mask: "ASC" },
     ],
+    current_time: 0,
+    isActive: false,
+    timer: null,
     images: null,
     bool_image: false,
     text_image_response: "",
-    error_load: false
+    error_load: false,
   }),
   methods: {
-    full_frame_image(event){
-      console.log(event.path[0].src);
+    start_timer() {
+      this.timer = setInterval(() => {
+        this.current_time--;
+      }, 1000);
     },
+    stop_timer() {
+      clearTimeout(this.timer);
+    },
+    full_frame_image(event) {
+      var src = event.path[0].currentSrc;
+      window.location.assign(src);
+    },
+
     get_photos() {
       var param = {
         quantity: this.quantity,
-        sort: this.sort
+        sort: this.sort,
       };
 
       const str = JSON.stringify(param);
@@ -231,23 +385,45 @@ export default {
 
       Vue.axios
         .post("https://imperiaclean.ru/method/get_photos.php", str)
-        .then(response => {
+        .then((response) => {
           var answer = response.data;
           this.images = answer;
           this.bool_image = false;
         })
-        .catch(error => {
+        .catch((error) => {
           var answer = error;
           this.text_image_response = "Ошибка загрузки";
           this.bool_image = true;
           this.error_load = true;
           this.images = answer;
-          console.log(error.data)
+          console.log(error.data);
         });
-    }
+    },
+    convert() {
+      var d = (this.current_time / 86400) ^ 0;
+      var h = (this.current_time / 3600) ^ 0;
+
+      var hs = ((this.current_time - d * 86400) / 3600) ^ 0;
+
+      var m = ((this.current_time - h * 3600) / 60) ^ 0;
+      var s = this.current_time - h * 3600 - m * 60;
+      return [d, hs, m, s];
+    },
+  },
+  watch: {
+    current_time(time) {
+      this.convert();
+      if (time === 0) {
+        this.stop_timer();
+      }
+    },
   },
   mounted() {
+    this.current_time = Math.floor(Math.random() * (892229 - 522229)) + 522229;
+    // this.current_time = Math.floor(86401*2)
+    this.convert();
     this.get_photos();
-  }
+    this.start_timer();
+  },
 };
 </script>

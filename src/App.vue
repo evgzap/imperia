@@ -117,6 +117,7 @@
 </template>
 
 <script>
+
 import cities from "@/components/cities.vue";
 
 export default {
@@ -160,8 +161,10 @@ export default {
     citi() {
       var answer = this.citi_data[this.dom.indexOf(this.pref)];
       if (answer == undefined) {
+        document.title = "Иперия чистоты | "+this.citi_data[this.dom.indexOf("msc")]+" уборка квартир"
         return this.citi_data[this.dom.indexOf("msc")];
       }
+      document.title = "Иперия чистоты | "+answer+" Уборка квартир"
       return answer;
     }
   }

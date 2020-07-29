@@ -1,6 +1,12 @@
 <template>
     <div class="main_preview">
-        {{$route.params}}
     </div>
 </template>
 <script>
+export default {
+    mounted(){
+        
+        console.log(this.$route)
+    }
+}
+</script>
