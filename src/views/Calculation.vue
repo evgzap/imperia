@@ -1,7 +1,7 @@
 <template>
   <section id="callback">
     <div class="wrapper">
-      <div class="name_section">Расчитать стоимость</div>
+      <div class="name_section">Рассчитать стоимость</div>
       <div class="center">
         <form method="POST" id="callback" class="form full" @submit.prevent>
           <div class="left">
@@ -30,7 +30,7 @@
                 <label>Кол-во стоворок</label>
                 <input type="number" name="areaW" placeholder="Кол-во" v-model="areaW" />
               </div>
-              
+
               <div class="local" v-if="selected_type_window == 3 || selected_type_window == 4">
                 <label>Площадь витража</label>
                 <input
@@ -94,6 +94,14 @@
               />
               <span v-if="error_tel" class="error">Проверте указанные данные</span>
             </label>
+
+
+            <label id="privacy" for="policy">
+              <input type="checkbox" id="policy" v-model="policy"> <span>согласен с <router-link to="/policy">политикой конфиденциальности</router-link></span>
+              <span v-if="error_policy" class="error">Вы пропустили поле</span>
+            </label>
+
+            
             <button type="submit" class="form_button orange" @click="onSubmit">
               <i class="fa fa-paper-plane" aria-hidden="true"></i>Оставить заявку
             </button>
@@ -115,11 +123,13 @@ export default {
     telephone: "",
     error_name: false,
     error_tel: false,
+    error_policy: false,
     response: "",
+    policy: false,
     typesC: [
       { type: "Генеральная", mask: 0 },
       { type: "Поддерживающая", mask: 1 },
-      { type: "После ремонта", mask: 2 }
+      { type: "После ремонта", mask: 2 },
     ],
     selected_type_clean: 0,
     typesW: [
@@ -127,22 +137,26 @@ export default {
       { type: "После ремонта", mask: 1 },
       { type: "Витражи простая", mask: 3 },
       { type: "Витражи ремонт", mask: 4 },
-      { type: "Не требуется", mask: 2 }
+      { type: "Не требуется", mask: 2 },
     ],
     selected_type_window: 2,
     area: "",
     areaW: "",
     services: [
-      { check: false, text: "Вынос мусора <sup>до 5 кг бесплатно</sup>", type: "trash" },
+      {
+        check: false,
+        text: "Вынос мусора <sup>до 5 кг бесплатно</sup>",
+        type: "trash",
+      },
       { check: false, text: "Химчистка мягкой мебели", type: "soft" },
       { check: false, text: "Химчистка напольных покрытий", type: "floor" },
       { check: false, text: "Мытье холодильника", type: "ref" },
       { check: false, text: "Микроволновая печь", type: "microwave" },
       { check: false, text: "Духовой шкаф", type: "oven" },
-      { check: false, text: "Кухонный гарнитур", type: "set" }
+      { check: false, text: "Кухонный гарнитур", type: "set" },
     ],
     success_service: "",
-    total: ""
+    total: "",
   }),
   methods: {
     onSubmit() {
@@ -158,6 +172,12 @@ export default {
       } else {
         this.error_tel = false;
       }
+      if (this.policy == false) {
+        this.error_policy = true;
+        return false;
+      } else {
+        this.error_policy = false;
+      }
       var param = {
         name: this.name,
         telephone: this.telephone,
@@ -168,7 +188,7 @@ export default {
         area: this.area,
         typeW: this.typesW[this.selected_type_window].type,
         areaW: this.areaW,
-        total: this.total
+        total: this.total,
       };
       if (this.area <= 10) {
         this.response =
@@ -178,13 +198,13 @@ export default {
       const str = JSON.stringify(param);
       Vue.axios
         .post("/method/send.php", str)
-        .then(response => {
+        .then((response) => {
           this.response =
             "<span class='success'>Наши операторы скоро с Вами свяжутся</span>";
           this.name = "";
           this.telephone = "";
         })
-        .catch(error => {
+        .catch((error) => {
           this.response = "<span class='error'>Упс, попробуйте позже ♥</span>";
           this.name = "";
           this.telephone = "";
@@ -281,18 +301,18 @@ export default {
       this.total = "На сумму " + total + " Рублей";
       return total;
     },
-    full_screen(){
-            var nav = document.querySelector('nav').clientHeight
-            var header = document.querySelector('header').clientHeight
-            var footer = document.querySelector('footer').clientHeight
+    full_screen() {
+      var nav = document.querySelector("nav").clientHeight;
+      var header = document.querySelector("header").clientHeight;
+      var footer = document.querySelector("footer").clientHeight;
 
-            var full = window.innerHeight-nav-header-footer
+      var full = window.innerHeight - nav - header - footer;
 
-            document.querySelector("section").style.height = full +"px"
-        }
+      document.querySelector("section").style.height = full + "px";
+    },
   },
-  mounted(){
-    this.full_screen()
-  }
+  mounted() {
+    this.full_screen();
+  },
 };
 </script>

@@ -31,6 +31,36 @@ Vue.use(VueRouter)
     component: () => import('@/views/js.vue')
   },
   {
+    path: '/policy',
+    name: 'Policy',
+    component: () => import('@/views/policy.vue')
+  },
+  {
+    path: '/general',
+    name: 'General',
+    component: () => import('@/views/general.vue')
+  },
+  {
+    path: '/soft',
+    name: 'Soft',
+    component: () => import('@/views/soft.vue')
+  },
+  {
+    path: '/arepair',
+    name: 'Arepair',
+    component: () => import('@/views/arepair.vue')
+  },
+  {
+    path: '/clear',
+    name: 'Clear',
+    component: () => import('@/views/clear.vue')
+  },
+  {
+    path: '/window',
+    name: 'Window',
+    component: () => import('@/views/window.vue')
+  },
+  {
     path: '*',
     name: 'error',
     component: () => import('@/views/error.vue')

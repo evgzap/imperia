@@ -10,7 +10,7 @@
             class="h_text"
           >Мы осуществляем уборку квартир, домов, офисных помещений, производственных зданий, мойку окон, витражей, химчистку мягкой мебели и ковровых покрытий</h1>
           <div class="btn">
-            <router-link :to="'/calculation/'+ct">Расчитать стоимость</router-link>
+            <router-link :to="'/calculation/'+ct">Рассчитать стоимость</router-link>
           </div>
           <div class="mini_section">
             <div class="mini_info">
@@ -129,7 +129,7 @@
               class="sale_text info"
             >В Генеральную уборку от 40р/м2 входит мытье полов, обеспыливание всех наружних поверхностей, мытье санузлов и сантехники</div>
             <div class="btn">
-              <router-link :to="'/calculation/'+ct">Расчитать стоимость</router-link>
+              <router-link :to="'/calculation/'+ct">Рассчитать стоимость</router-link>
             </div>
             <div
               class="sale_text ps"
@@ -212,7 +212,7 @@
                     <img src="/img/2.jpg" alt />
                   </div>
                   <div class="btn">
-                    <a href>Подробнее</a>
+                    <router-link to="/general">Подробнее</router-link>
                   </div>
                 </div>
               </div>
@@ -223,7 +223,7 @@
                     <img src="/img/4.jpg" alt />
                   </div>
                   <div class="btn">
-                    <a href>Подробнее</a>
+                    <router-link to="/soft">Подробнее</router-link>
                   </div>
                 </div>
               </div>
@@ -236,7 +236,7 @@
                     <img src="/img/5.jpg" alt />
                   </div>
                   <div class="btn">
-                    <a href>Подробнее</a>
+                    <router-link to="/arepair">Подробнее</router-link>
                   </div>
                 </div>
               </div>
@@ -247,7 +247,7 @@
                     <img src="/img/1.jpg" alt />
                   </div>
                   <div class="btn">
-                    <a href>Подробнее</a>
+                    <router-link to="/clear">Подробнее</router-link>
                   </div>
                 </div>
               </div>
@@ -260,7 +260,7 @@
                     <img src="/img/3.jpg" alt />
                   </div>
                   <div class="btn">
-                    <a href>Подробнее</a>
+                    <router-link to="/window">Подробнее</router-link>
                   </div>
                 </div>
               </div>
@@ -330,10 +330,64 @@
         </div>
         <div class="block_for_button">
           <div class="btn">
-            <router-link :to="'/calculation/'+ct">Расчитать стоимость</router-link>
+            <router-link :to="'/calculation/'+ct">Рассчитать стоимость</router-link>
           </div>
           <div class="btn">
             <router-link :to="'/callBack/'+ct">Заказать звонок</router-link>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="main_section" id="feedback">
+      <div class="wrapper">
+        <div class="left">
+          <div class="name_section">
+            Отзывы наших <span>клиентов</span>
+          </div>
+        </div>
+        <div class="right"></div>
+        <div class="center">
+          <div class="fb">
+            <div class="avatar">
+              <img src="img/girl_user.png" alt="">
+            </div>
+            <div class="name_user">
+              Наталья
+            </div>
+            <div class="date">
+              20.05.2020
+            </div>
+            <div class="message">
+              Очень довольна результатом. Приобрели квартиру в ужастном состоянии,пытались сделать уборку своими силами, но не справились,результат желал лучшего.Решила обратится в клининговую компанию Империя чистоты , Очень благодарна клинерам Светлане и Ольге,которые привели мою квартиру в порядок.Цена порадовала.Я думала ,что никто не справится .Девушки приехали в удобный мне день .Спасибо вам огромное! Желаю Вам успехов и развития
+            </div>
+          </div>
+          <div class="fb">
+            <div class="avatar">
+              <img src="img/man_user.png" alt="">
+            </div>
+            <div class="name_user">
+              Юрий
+            </div>
+            <div class="date">
+              19.07.2020
+            </div>
+            <div class="message">
+              Спасибо за качественную уборку офиса. Своевременно оформили все документы и приехали в нужное нам время, клинеры сразу видно опытные, современное оборудование, нам очень понравилось. Будем обращаться еще.
+            </div>
+          </div>
+          <div class="fb">
+            <div class="avatar">
+              <img src="img/girl_user_2.png" alt="">
+            </div>
+            <div class="name_user">
+              Людмила
+            </div>
+            <div class="date">
+              27.07.2020
+            </div>
+            <div class="message">
+              Хочу выразить благодарность компании Империя чистоты.Заказала уборку своей бабушке. Квартира была запущена.Было очень тяжело,но клинеры справились,отмыли до блеска,идеально.Также понравилась химчистка ковров,хотели с ними расстатся,теперь как новые.Как хорошо что есть такие службы,которые за небольшую плату готовы придти на помощь.Еще раз спасибо вам.
+            </div>
           </div>
         </div>
       </div>
@@ -346,7 +400,7 @@ export default {
   props: ["ct"],
   data: () => ({
     quantity: 10,
-    sort: "ASC",
+    sort: "DESC",
     sort_type: [
       { type: "Новее", mask: "DESC" },
       { type: "Страше", mask: "ASC" },

@@ -22,6 +22,10 @@
             />
             <span v-if="error_tel" class="error">Проверте указанные данные</span>
           </label>
+          <label id="privacy" for="policy">
+            <input type="checkbox" id="policy" v-model="policy"> <span>согласен с <router-link to="/policy">политикой конфиденциальности</router-link></span>
+            <span v-if="error_policy" class="error">Вы пропустили поле</span>
+          </label>
           <button type="submit" class="form_button orange" @click="onSubmit">
             <i class="fa fa-phone" aria-hidden="true"></i>Заказать звонок
           </button>
@@ -30,7 +34,7 @@
             class="blue form_button"
             type="button"
           >
-            <i class="fa fa-calculator" aria-hidden="true"></i>Расчитать стоимость
+            <i class="fa fa-calculator" aria-hidden="true"></i>Рассчитать стоимость
           </router-link>
         </form>
       </div>
@@ -46,7 +50,10 @@ export default {
     telephone: "",
     error_name: false,
     error_tel: false,
-    response: ""
+    error_policy: false,
+    response: "",
+    policy: false,
+    
   }),
   methods: {
     onSubmit() {
@@ -62,6 +69,14 @@ export default {
       } else {
         this.error_tel = false;
       }
+      if(this.policy == false){
+        this.error_policy = true;
+        return false;
+      }
+      else{
+        this.error_policy = false
+      }
+
       var param = {
         name: this.name,
         telephone: this.telephone,

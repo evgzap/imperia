@@ -43,10 +43,10 @@ form {
         padding: 10px;
     }
     .error {
-        color: #fb5555;
+        color: #fb5555 !important;
     }
     .success {
-        color: green;
+        color: green !important;
     }
 }
 form button,
@@ -211,6 +211,38 @@ span.error {
     padding: 10px;
     display: block;
     font-weight: bold;
+}
+#privacy{
+    cursor: pointer;
+    input{
+        box-shadow: none;
+        -webkit-appearance: checkbox;
+        cursor: pointer;
+        width: auto;
+    }
+    span{
+        font-size: .8rem;
+        font-family: "Roboto";
+        font-weight: 400;
+        color: gray;
+    }
+    .error{
+        text-align: center !important;
+        width: 100% !important;
+        padding: 10px !important;
+        display: block !important;
+        font-weight: bold !important;
+        font-size: 1rem;
+    }
+    a{
+        box-shadow: none;
+        color: $color-main-blue;
+        padding: 0;
+        text-decoration: underline;
+        font-family: "Roboto";
+        font-weight: 300;
+        font-size: .8rem;
+    }
 }
 @media screen and (max-width: 874px){
     #callback{
