@@ -128,7 +128,6 @@ export default {
       "Тула",
       "Алексин",
       "Донской",
-      "Новомосковск",
       "Саратов",
       "Балаково",
       "Энгельс",
@@ -136,13 +135,22 @@ export default {
       "Москва",
       "TEST",
       "Москва",
-      "Мытищи"
+      "Мытищи",
+      "Санкт-Петербург",
+      "Одинцово",
+      "Новомосковск",
+      "Липецк",
+      "Люберцы",
+      "Дмитров",
+      "Демидов",
+      "Брянск",
+      "Белгород",
+
     ],
     dom: [
       "tula",
       "aleksin",
       "dnsk",
-      "nvmsk",
       "srtv",
       "blkv",
       "engls",
@@ -150,7 +158,17 @@ export default {
       "msc",
       "localhost",
       "imperiacean",
-      "mtszh"
+      "mtszh",
+      "spb",
+      "odnc",
+      "nvmsc",
+      "lpc",
+      "lbrc",
+      "dmit",
+      "dmdv",
+      "br",
+      "blgr"
+
     ],
     pref: window.location.hostname.split(".")[0]
   }),
@@ -161,10 +179,10 @@ export default {
     citi() {
       var answer = this.citi_data[this.dom.indexOf(this.pref)];
       if (answer == undefined) {
-        document.title = "Иперия чистоты | "+this.citi_data[this.dom.indexOf("msc")]+" уборка квартир"
+        document.title = "Империя чистоты | "+this.citi_data[this.dom.indexOf("msc")]+" уборка квартир"
         return this.citi_data[this.dom.indexOf("msc")];
       }
-      document.title = "Иперия чистоты | "+answer+" Уборка квартир"
+      document.title = "Империя чистоты | "+answer+" Уборка квартир"
       return answer;
     }
   }

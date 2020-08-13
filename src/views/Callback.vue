@@ -5,6 +5,7 @@
       <div class="center">
         <img src="/img/callback_image_1.jpg" alt="Картинкой с уборкой" />
         <form method="POST" id="callback" class="form" @submit.prevent>
+          <h4 class="good_text">Перезвоним за 5 минут!</h4>
           <h4 v-html="response"></h4>
           <label>
             <input type="text" name="name" placeholder="Ваше имя" id="name" v-model="name" required />
@@ -26,9 +27,11 @@
             <input type="checkbox" id="policy" v-model="policy"> <span>согласен с <router-link to="/policy">политикой конфиденциальности</router-link></span>
             <span v-if="error_policy" class="error">Вы пропустили поле</span>
           </label>
+          <div class="just_text">Оставленная заявка ни к чему Вас не обязывает <hr> Вы можете отказаться в любой момент</div>
           <button type="submit" class="form_button orange" @click="onSubmit">
             <i class="fa fa-phone" aria-hidden="true"></i>Заказать звонок
           </button>
+          
           <router-link
             :to="'/calculation/'+$route.params.id"
             class="blue form_button"
@@ -80,20 +83,23 @@ export default {
       var param = {
         name: this.name,
         telephone: this.telephone,
+        city: this.$route.params.id,
         from: "Заявка",
         text: "Оставили заявку на звонок",
-        area: this.area
+        area: this.area,
       };
       const str = JSON.stringify(param);
       Vue.axios
         .post("/method/send.php", str)
         .then(response => {
+          console.log(response.data)
           this.response =
             "<span class='success'>Наши операторы скоро с Вами свяжутся</span>";
           this.name = "";
           this.telephone = "";
         })
         .catch(error => {
+          console.log(error)
           this.response = "<span class='error'>Упс, попробуйте позже ♥</span>";
           this.name = "";
           this.telephone = "";
@@ -119,7 +125,8 @@ export default {
     }
   },
   mounted(){
-    this.full_screen()
+    this.full_screen();
+    
   }
 };
 </script>

@@ -4,6 +4,7 @@
       <div class="name_section">Рассчитать стоимость</div>
       <div class="center">
         <form method="POST" id="callback" class="form full" @submit.prevent>
+          
           <div class="left">
             <div class="top_option">
               <div class="local">
@@ -65,6 +66,7 @@
             </div>
           </div>
           <div class="right">
+            <h4 class="good_text">Перезвоним за 5 минут!</h4>
             <div class="price">
               Итого:
               <span>{{price()}}</span>
@@ -101,7 +103,7 @@
               <span v-if="error_policy" class="error">Вы пропустили поле</span>
             </label>
 
-            
+            <div class="just_text">Оставленная заявка ни к чему Вас не обязывает <hr> Вы можете отказаться в любой момент</div>
             <button type="submit" class="form_button orange" @click="onSubmit">
               <i class="fa fa-paper-plane" aria-hidden="true"></i>Оставить заявку
             </button>
@@ -181,6 +183,7 @@ export default {
       var param = {
         name: this.name,
         telephone: this.telephone,
+        city: this.$route.params.id,
         from: "Калькулятор",
         text: "Оставили заявку через калькулятор",
         serv: this.success_service,

@@ -65,6 +65,16 @@ label {
     margin-bottom: $ruler * 1.5;
     width: 100%;
 }
+.just_text{
+    margin-bottom: $ruler;
+    text-align: center;
+    text-decoration: underline;
+    color:gray;
+    font-size: .9rem;
+}
+.good_text{
+    color: $color-main-blue;
+}
 form input {
     margin-right: $ruler/2;
     box-shadow: inset 2px 2px 5px $color-shadow, inset -5px -5px 10px $color-white;
@@ -126,8 +136,8 @@ form.full {
     }
     .right {
         padding: $ruler;
-        width: $ruler * 20;
         margin: 0 auto;
+        width: $ruler * 23;
     }
     .top_option {
         width: 100%;
@@ -212,6 +222,7 @@ span.error {
     display: block;
     font-weight: bold;
 }
+
 #privacy{
     cursor: pointer;
     input{
